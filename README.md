@@ -29,8 +29,22 @@
 ## ---------------------------------------------------------------- ##
 
 ##1. Explore the distribution of each of the x, y, and z variables in diamonds. What do you learn? Think about a diamond and how you might decide which dimension is the length, width, and depth.
+   data(diamonds)
+   gather(diamonds, k, v, x:z)   %>%
+      ggplot(aes(v)) +
+      geom_histogram() +
+      facet_wrap(~k) +
+      xlim(0,10)
+      
+      ?gather
 
 ##2. Explore the distribution of price. Do you discover anything unusual or surprising? (Hint: Carefully think about the binwidth and make sure you try a wide range of values.)
+
+   ?diamonds
+   
+   ggplot(data = diamonds, mapping = aes(x = price)) +
+   geom_histogram(binwidth = 1) +
+   coord_cartesian(xlim = c(0, 1000))
 
 ##3. How many diamonds are 0.99 carat? How many are 1 carat? What do you think is the cause of the difference?
 
